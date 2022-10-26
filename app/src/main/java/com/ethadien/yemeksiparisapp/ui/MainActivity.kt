@@ -1,7 +1,8 @@
-package com.ethadien.yemeksiparisapp
+package com.ethadien.yemeksiparisapp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.ethadien.yemeksiparisapp.R
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

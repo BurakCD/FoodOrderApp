@@ -1,4 +1,4 @@
-package com.ethadien.yemeksiparisapp.ui.fragment
+package com.ethadien.yemeksiparisapp.ui.main.home
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,21 +8,19 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import com.ethadien.yemeksiparisapp.R
-import com.ethadien.yemeksiparisapp.databinding.FragmentCartBinding
 import com.ethadien.yemeksiparisapp.databinding.FragmentHomeBinding
-import com.ethadien.yemeksiparisapp.ui.viewmodel.CartViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.HiltAndroidApp
 
 @AndroidEntryPoint
-class CartFragment : Fragment() {
-    private lateinit var binding : FragmentCartBinding
-    private lateinit var viewModel : CartViewModel
+class HomeFragment : Fragment() {
+    private lateinit var binding : FragmentHomeBinding
+    private lateinit var viewModel : HomeViewModel
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_cart, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
 
 
         return binding.root
@@ -30,7 +28,7 @@ class CartFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val tempViewModel:CartViewModel by viewModels()
+        val tempViewModel : HomeViewModel by viewModels()
         viewModel = tempViewModel
     }
 }

@@ -1,4 +1,4 @@
-package com.ethadien.yemeksiparisapp.ui.fragment
+package com.ethadien.yemeksiparisapp.ui.main.detail
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,22 +8,19 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import com.ethadien.yemeksiparisapp.R
-import com.ethadien.yemeksiparisapp.databinding.FragmentCartBinding
-import com.ethadien.yemeksiparisapp.databinding.FragmentHomeBinding
-import com.ethadien.yemeksiparisapp.ui.viewmodel.CartViewModel
-import com.ethadien.yemeksiparisapp.ui.viewmodel.HomeViewModel
+import com.ethadien.yemeksiparisapp.databinding.FragmentFoodDetailBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeFragment : Fragment() {
-    private lateinit var binding : FragmentHomeBinding
-    private lateinit var viewModel : HomeViewModel
+class FoodDetailFragment : Fragment() {
+    private lateinit var binding : FragmentFoodDetailBinding
+    private lateinit var viewModel : FoodDetailViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_food_detail, container, false)
 
 
         return binding.root
@@ -31,7 +28,7 @@ class HomeFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val tempViewModel : HomeViewModel by viewModels()
+        val tempViewModel: FoodDetailViewModel by viewModels()
         viewModel = tempViewModel
     }
 }

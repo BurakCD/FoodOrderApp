@@ -7,6 +7,7 @@ import com.ethadien.yemeksiparisapp.data.repository.FoodRepository
 import com.ethadien.yemeksiparisapp.retrofit.ApiUtils
 import com.ethadien.yemeksiparisapp.retrofit.CartFoodDao
 import com.ethadien.yemeksiparisapp.retrofit.FoodDao
+import com.google.firebase.auth.FirebaseAuth
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -45,8 +46,8 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideCartFoodRepository(cartFoodDS : CartFoodDataSource) : CartFoodRepository {
-        return CartFoodRepository(cartFoodDS)
+    fun provideCartFoodRepository(cartFoodDS : CartFoodDataSource, firebaseAuth: FirebaseAuth) : CartFoodRepository {
+        return CartFoodRepository(cartFoodDS, firebaseAuth)
     }
 
     @Provides
@@ -60,4 +61,8 @@ class AppModule {
     fun provideCartFoodDao() : CartFoodDao {
         return ApiUtils.getCartFoodDao()
     }
+
+    @Provides
+    @Singleton
+    fun provideFirebaseAuth() = FirebaseAuth.getInstance()
 }

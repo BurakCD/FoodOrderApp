@@ -1,4 +1,4 @@
-package com.ethadien.yemeksiparisapp.ui.fragment
+package com.ethadien.yemeksiparisapp.ui.main.cart
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,21 +8,18 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import com.ethadien.yemeksiparisapp.R
-import com.ethadien.yemeksiparisapp.databinding.FragmentFoodDetailBinding
-import com.ethadien.yemeksiparisapp.databinding.FragmentHomeBinding
-import com.ethadien.yemeksiparisapp.ui.viewmodel.FoodDetailViewModel
+import com.ethadien.yemeksiparisapp.databinding.FragmentCartBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class FoodDetailFragment : Fragment() {
-    private lateinit var binding : FragmentFoodDetailBinding
-    private lateinit var viewModel : FoodDetailViewModel
-
+class CartFragment : Fragment() {
+    private lateinit var binding : FragmentCartBinding
+    private lateinit var viewModel : CartViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_food_detail, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_cart, container, false)
 
 
         return binding.root
@@ -30,7 +27,7 @@ class FoodDetailFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val tempViewModel:FoodDetailViewModel by viewModels()
+        val tempViewModel: CartViewModel by viewModels()
         viewModel = tempViewModel
     }
 }

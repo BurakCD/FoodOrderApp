@@ -1,4 +1,4 @@
-package com.ethadien.yemeksiparisapp.ui.viewmodel
+package com.ethadien.yemeksiparisapp.ui.main.detail
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
