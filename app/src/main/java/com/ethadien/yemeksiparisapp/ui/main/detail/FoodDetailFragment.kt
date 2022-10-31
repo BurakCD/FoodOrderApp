@@ -19,14 +19,15 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class FoodDetailFragment : Fragment() {
-    private lateinit var binding: FragmentFoodDetailBinding
+    private var _binding: FragmentFoodDetailBinding? = null
+    private val binding get() = _binding!!
     private lateinit var viewModel: FoodDetailViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_food_detail, container, false)
+        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_food_detail, container, false)
         binding.foodDetailFragment = this
 
         val bundle: FoodDetailFragmentArgs by navArgs()
@@ -82,5 +83,10 @@ class FoodDetailFragment : Fragment() {
 
     fun addToCart(food: Food) {
         viewModel.addToCart(food, binding.quantitizer.value)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

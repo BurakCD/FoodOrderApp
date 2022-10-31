@@ -15,7 +15,7 @@ import com.ethadien.yemeksiparisapp.utils.showSnackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SignInFragment : Fragment() {
+class SignInFragment : Fragment(R.layout.fragment_sign_in) {
     private var _binding: FragmentSignInBinding? = null
     private val binding get() = _binding!!
 
@@ -31,6 +31,7 @@ class SignInFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_sign_in, container, false)
 
         return binding.root

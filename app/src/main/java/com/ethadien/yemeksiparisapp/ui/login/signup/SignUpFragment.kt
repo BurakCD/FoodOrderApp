@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import com.ethadien.yemeksiparisapp.R
 import com.ethadien.yemeksiparisapp.databinding.FragmentSignUpBinding
 import com.ethadien.yemeksiparisapp.utils.showSnackbar
@@ -90,6 +91,8 @@ class SignUpFragment : Fragment() {
         phoneNumber : String
     ){
         viewModel.signUp(eMail, password, confirmPassword, nickname, phoneNumber)
+        clearFields()
+        Navigation
     }
 
     private fun clearFields(){

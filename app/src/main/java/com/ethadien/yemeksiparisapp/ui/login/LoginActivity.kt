@@ -16,11 +16,12 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
-    private lateinit var binding : ActivityLoginBinding
+    private var _binding: ActivityLoginBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
+        _binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
 
         Firebase.auth.currentUser?.let {
             val intent = Intent(this, MainActivity::class.java)
@@ -35,5 +36,10 @@ class LoginActivity : AppCompatActivity() {
         TabLayoutMediator(binding.tabLayout, binding.viewPager) {tab, position ->
             tab.text = titleList[position]
         }.attach()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }
