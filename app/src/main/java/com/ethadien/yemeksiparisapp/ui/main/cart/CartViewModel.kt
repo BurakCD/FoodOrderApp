@@ -2,7 +2,6 @@ package com.ethadien.yemeksiparisapp.ui.main.cart
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.ethadien.yemeksiparisapp.data.entity.CartFood
 import com.ethadien.yemeksiparisapp.data.repository.CartFoodRepository
 import com.google.firebase.auth.FirebaseAuth
@@ -29,7 +28,7 @@ class CartViewModel @Inject constructor (var cartFoodRepo : CartFoodRepository, 
 
     fun delete(cart_food_id : Int){
         CoroutineScope(Dispatchers.Main).launch {
-            cartFoodRepo.delete(cart_food_id, firebaseAuth.currentUser!!.uid)
+            cartFoodRepo.deleteFromCart(cart_food_id, firebaseAuth.currentUser!!.uid)
         }
     }
 }

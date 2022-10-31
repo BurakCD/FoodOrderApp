@@ -1,4 +1,4 @@
-package com.ethadien.yemeksiparisapp.ui
+package com.ethadien.yemeksiparisapp.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

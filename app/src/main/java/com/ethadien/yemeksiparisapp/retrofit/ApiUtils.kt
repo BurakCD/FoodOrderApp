@@ -1,8 +1,9 @@
 package com.ethadien.yemeksiparisapp.retrofit
 
+import com.ethadien.yemeksiparisapp.utils.Constants.BASE_URL
+
 class ApiUtils {
     companion object{
-        var BASE_URL = "http://kasimadalan.pe.hu/yemekler/"
 
         fun getFoodDao() : FoodDao{
             return RetrofitClient.getClient(BASE_URL).create(FoodDao::class.java)
