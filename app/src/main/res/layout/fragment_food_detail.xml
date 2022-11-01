@@ -71,7 +71,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+            app:layout_constraintVertical_bias="0.0">
 
 
             <ImageView
@@ -126,7 +127,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="34dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="30dp"
                 android:fontFamily="@font/roboto_medium"
                 android:text="@string/price"
                 android:textColor="@color/white"
@@ -139,7 +140,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="34dp"
-                android:layout_marginTop="9dp"
+                android:layout_marginTop="4dp"
                 android:fontFamily="@font/roboto_medium"
                 android:text='@{Integer.toString(foodInstance.food_price)}'
                 android:textColor="@color/white"
@@ -152,7 +153,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="2dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
                 android:fontFamily="@font/roboto_medium"
                 android:text="@string/moneyType"
                 android:textColor="@color/white"
@@ -167,7 +168,7 @@
                 android:layout_marginEnd="50dp"
                 android:layout_marginBottom="32dp"
                 android:background="@drawable/red_button_background"
-                android:drawableLeft="@drawable/ic_add_cart"
+                android:drawableStart="@drawable/ic_add_cart"
                 android:drawablePadding="-90dp"
                 android:fontFamily="@font/roboto_medium"
                 android:paddingStart="90dp"
