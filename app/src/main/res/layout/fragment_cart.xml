@@ -23,7 +23,7 @@
             android:id="@+id/scrollView2"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/addToCartButton"
+            app:layout_constraintBottom_toTopOf="@+id/goToPaymentButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cartToolbar">
@@ -72,10 +72,10 @@
         </ScrollView>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/addToCartButton"
+            android:id="@+id/goToPaymentButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="0dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="16dp"
@@ -94,15 +94,14 @@
 
         <LinearLayout
             android:id="@+id/linearLayout2"
-            android:layout_width="50dp"
+            android:layout_width="70dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="2dp"
             android:layout_marginBottom="2dp"
             android:gravity="center"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/addToCartButton"
+            app:layout_constraintEnd_toStartOf="@+id/goToPaymentButton"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/scrollView2">
 
@@ -112,9 +111,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
-                    android:layout_weight="1"
                     android:fontFamily="@font/roboto_medium"
-                    android:text="@{Integer.toString(foodInstance.yemek_fiyat)}"
                     android:textColor="@color/black"
                     android:textSize="24sp"
                     android:textStyle="bold" />
@@ -126,7 +123,6 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
-                    android:layout_weight="1"
                     android:fontFamily="@font/roboto_medium"
                     android:text="@string/money_type"
                     android:textColor="@color/black"

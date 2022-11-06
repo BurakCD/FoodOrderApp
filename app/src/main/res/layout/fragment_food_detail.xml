@@ -154,7 +154,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/addToCartButton"
+                android:id="@+id/goToPaymentButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="50dp"
@@ -179,7 +179,7 @@
                 tools:layout_editor_absoluteX="164dp"
                 tools:layout_editor_absoluteY="432dp"
                 android:orientation="horizontal"
-                app:layout_constraintBottom_toTopOf="@id/addToCartButton"
+                app:layout_constraintBottom_toTopOf="@id/goToPaymentButton"
                 app:layout_constraintLeft_toRightOf="@id/moneyType"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

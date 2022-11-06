@@ -16,7 +16,8 @@
             app:popUpTo="@id/homeFragment" />
         <action
             android:id="@+id/home_to_profile"
-            app:destination="@id/profileFragment" />
+            app:destination="@id/profileFragment"
+            app:popUpTo="@id/homeFragment" />
     </fragment>
 
     <fragment
@@ -25,11 +26,9 @@
         android:label="CartFragment"
         tools:layout="@layout/fragment_cart">
         <action
-            android:id="@+id/action_cartFragment_to_foodDetailFragment"
-            app:destination="@id/foodDetailFragment" />
-        <action
-            android:id="@+id/action_cartFragment_to_paymentFragment"
-            app:destination="@id/paymentFragment" />
+            android:id="@+id/cart_to_payment"
+            app:destination="@id/paymentFragment"
+            app:popUpTo="@id/cartFragment" />
     </fragment>
 
     <fragment
@@ -49,7 +48,7 @@
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.canerture.booksapp.ui.main.profile.ProfileFragment"
+        android:name="com.ethadien.yemeksiparisapp.ui.main.profile.ProfileFragment"
         android:label="ProfileFragment"
         tools:layout="@layout/fragment_profile" />
 

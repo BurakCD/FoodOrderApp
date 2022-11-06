@@ -8,10 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import com.ethadien.yemeksiparisapp.R
 import com.ethadien.yemeksiparisapp.databinding.FragmentCartBinding
 import com.ethadien.yemeksiparisapp.ui.main.home.CartDrinkAdapter
 import com.ethadien.yemeksiparisapp.ui.main.home.RecyclerAdapter
+import com.ethadien.yemeksiparisapp.utils.gate
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -27,17 +29,23 @@ class CartFragment : Fragment() {
         _binding = FragmentCartBinding.inflate(inflater, container, false)
         var totalPrice = 0
 
+        binding.goToPaymentButton.setOnClickListener{
+            Navigation.gate(requireView(), R.id.cart_to_payment)
+        }
+
         with(viewModel) {
             cartList.observe(viewLifecycleOwner) {
                 if (it != null) {
                     binding.cartRV.adapter = CartFoodAdapter(requireContext(), it!!, viewModel)
+                    totalPrice = 0
+                    for (i in it){
+                        totalPrice += i.yemek_fiyat.toInt()
+                    }
+                    binding.cartTotalPrice.text = totalPrice.toString()
                 }else{
                     binding.cartRV.adapter = EmptyCartAdapter(requireContext())
                 }
-                for (i in it){
-                    totalPrice += i.yemek_fiyat.toInt()
-                }
-                binding.cartTotalPrice.text = totalPrice.toString()
+
             }
             drinkSet.observe(viewLifecycleOwner) {
                 if (it != null) {
