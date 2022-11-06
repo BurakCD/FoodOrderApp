@@ -81,7 +81,7 @@
             android:layout_marginBottom="16dp"
             android:background="@drawable/ui_button_background"
             android:drawableStart="@drawable/ic_card"
-            android:drawablePadding="-80dp"
+            android:drawablePadding="-50dp"
             android:fontFamily="@font/roboto_medium"
             android:paddingStart="90dp"
             android:text="@string/go_to_payment"
