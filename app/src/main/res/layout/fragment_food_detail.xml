@@ -6,7 +6,7 @@
     <data>
         <variable
             name="foodInstance"
-            type="com.ethadien.yemeksiparisapp.data.entity.Food" />
+            type="com.ethadien.yemeksiparisapp.data.entity.food.Food" />
         <variable
             name="foodDetailFragment"
             type="com.ethadien.yemeksiparisapp.ui.main.detail.FoodDetailFragment" />
@@ -38,13 +38,14 @@
                 android:paddingTop="10dp"
                 android:paddingEnd="10dp"
                 android:paddingBottom="10dp"
+                android:onClick="@{()-> foodDetailFragment.goToHome()}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_back" />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/detailsFragmentText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -93,12 +94,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/roboto_medium"
-                android:text="@{foodInstance.food_name}"
+                android:text="@{foodInstance.yemek_adi}"
                 android:textColor="@color/white"
                 android:textSize="40sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -111,16 +113,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
-
-            <com.mcdev.quantitizerlibrary.HorizontalQuantitizer
-                android:id="@+id/quantitizer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="184dp"
-                android:layout_marginTop="40dp"
-                android:elevation="12dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textView3"
@@ -142,7 +134,7 @@
                 android:layout_marginStart="34dp"
                 android:layout_marginTop="4dp"
                 android:fontFamily="@font/roboto_medium"
-                android:text='@{Integer.toString(foodInstance.food_price)}'
+                android:text='@{Integer.toString(foodInstance.yemek_fiyat)}'
                 android:textColor="@color/white"
                 android:textSize="24sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -155,13 +147,14 @@
                 android:layout_marginStart="2dp"
                 android:layout_marginTop="4dp"
                 android:fontFamily="@font/roboto_medium"
-                android:text="@string/moneyType"
+                android:text="@string/money_type"
                 android:textColor="@color/white"
                 android:textSize="24sp"
                 app:layout_constraintStart_toEndOf="@id/priceText"
                 app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/addToCartButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="50dp"
@@ -172,13 +165,75 @@
                 android:drawablePadding="-90dp"
                 android:fontFamily="@font/roboto_medium"
                 android:paddingStart="90dp"
-                android:text="@string/addToCart"
+                android:text="@string/add_to_cart"
                 android:textColor="@color/white"
                 android:textStyle="bold"
-                android:onClick="@{()-> foodDetailFragment.addToCart(foodInstance)}"
+                android:onClick="@{()-> foodDetailFragment.addToCart(foodInstance, countText.getText().toString())}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                tools:layout_editor_absoluteX="164dp"
+                tools:layout_editor_absoluteY="432dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toTopOf="@id/addToCartButton"
+                app:layout_constraintLeft_toRightOf="@id/moneyType"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:gravity="center">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/appCompatButton"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.3"
+                    android:background="@drawable/red_button_background"
+                    android:text="-"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    android:onClick="@{() -> foodDetailFragment.decreaseCount()}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/countText"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/countText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.3"
+                    android:text="1"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="25sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/addButton"
+                    app:layout_constraintStart_toEndOf="@+id/appCompatButton"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/addButton"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.3"
+                    android:background="@drawable/red_button_background"
+                    android:text="+"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    android:onClick="@{() -> foodDetailFragment.increaseCount()}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/countText"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

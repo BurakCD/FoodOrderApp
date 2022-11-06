@@ -90,9 +90,17 @@ class SignUpFragment : Fragment() {
         nickname : String,
         phoneNumber : String
     ){
-        viewModel.signUp(eMail, password, confirmPassword, nickname, phoneNumber)
-        clearFields()
-        Navigation
+        if (!binding.eMailSignUp.text.isNullOrEmpty()       ||
+            !binding.passwordSignUp.error.isNullOrEmpty()   ||
+            !binding.confirmPassSignUp.text.isNullOrEmpty() ||
+            !binding.nicknameSignUp.text.isNullOrEmpty()    ||
+            !binding.phoneSignUp.text.isNullOrEmpty())
+        {
+            viewModel.signUp(eMail, password, confirmPassword, nickname, phoneNumber)
+            clearFields()
+        }else{
+            showSnackbar(requireView(), R.string.dont_null)
+        }
     }
 
     private fun clearFields(){

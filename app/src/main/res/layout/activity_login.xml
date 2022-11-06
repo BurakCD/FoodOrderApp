@@ -13,15 +13,16 @@
             android:id="@+id/tabLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:tabGravity="fill"
-            app:tabMode="fixed"
-            app:tabTextColor="@color/RED"
-            app:tabIndicator="@color/YellowDetails"
-            app:tabIndicatorGravity="bottom"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/viewPager"
+            app:tabGravity="fill"
+            app:tabIndicator="@color/YellowDetails"
+            app:tabIndicatorGravity="bottom"
+            app:tabMode="fixed"
+            app:tabTextColor="@color/RED" />
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewPager"

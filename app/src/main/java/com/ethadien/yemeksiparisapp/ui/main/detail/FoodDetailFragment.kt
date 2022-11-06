@@ -7,14 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.ethadien.yemeksiparisapp.R
-import com.ethadien.yemeksiparisapp.data.entity.Food
+import com.ethadien.yemeksiparisapp.data.entity.food.Food
 import com.ethadien.yemeksiparisapp.databinding.FragmentFoodDetailBinding
 import com.ethadien.yemeksiparisapp.utils.Constants.IMAGE_BASE_URL
-import com.mcdev.quantitizerlibrary.AnimationStyle
-import com.mcdev.quantitizerlibrary.QuantitizerListener
+import com.ethadien.yemeksiparisapp.utils.gate
+import com.ethadien.yemeksiparisapp.utils.showSnackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -22,6 +23,7 @@ class FoodDetailFragment : Fragment() {
     private var _binding: FragmentFoodDetailBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel: FoodDetailViewModel
+    private lateinit var foodInstance : Food
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,38 +34,11 @@ class FoodDetailFragment : Fragment() {
 
         val bundle: FoodDetailFragmentArgs by navArgs()
         val foodArg = bundle.food
+        foodInstance = foodArg
         binding.foodInstance = foodArg
 
-        getImage(foodArg.food_image_name)
+        getImage(foodArg.yemek_resim_adi)
 
-
-        with(binding.quantitizer) {
-            maxValue = 5
-            setQuantitizerListener(object : QuantitizerListener {
-                override fun onIncrease() {
-                    var price = binding.priceText.text.toString().toInt() - foodArg.food_price
-
-                    binding.priceText.text = price.toString()
-                }
-
-                override fun onValueChanged(value: Int) {
-                }
-
-                override fun onDecrease() {
-                    var price = binding.priceText.text.toString().toInt() + foodArg.food_price
-                    binding.priceText.text = price.toString()
-                }
-
-            })
-
-            textAnimationStyle = AnimationStyle.SLIDE_IN_REVERSE
-
-            setMinusIconColor(R.color.RED)
-            setPlusIconColor(R.color.white)
-
-            setPlusIconBackgroundColor(R.color.white)
-            setMinusIconBackgroundColor(R.color.RED)
-        }
 
         return binding.root
     }
@@ -81,12 +56,40 @@ class FoodDetailFragment : Fragment() {
             .into(binding.foodImage)
     }
 
-    fun addToCart(food: Food) {
-        viewModel.addToCart(food, binding.quantitizer.value)
+    fun decreaseCount(){
+        val count = binding.countText.text.toString().toInt() -1
+        val price = binding.priceText.text.toString().toInt() - foodInstance.yemek_fiyat
+        if (count > 0){
+            binding.countText.text = count.toString()
+            binding.priceText.text = price.toString()
+        }else{
+            showSnackbar(requireView(), R.string.not_zero)
+        }
+        if (binding.priceText.text.toString().toInt() < foodInstance.yemek_fiyat){
+            binding.priceText.text = foodInstance.yemek_fiyat.toString()
+        }
+
+    }
+
+    fun increaseCount(){
+        val count = binding.countText.text.toString().toInt() + 1
+        binding.countText.text = count.toString()
+        val price = binding.priceText.text.toString().toInt() + foodInstance.yemek_fiyat
+        binding.priceText.text = price.toString()
+    }
+
+    fun addToCart(food: Food, count : String) {
+        viewModel.addToCart(food, count.toInt())
+    }
+
+    fun goToHome(){
+        Navigation.gate(requireView(), R.id.go_to_home)
+        onDestroyView()
     }
 
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
     }
+
 }

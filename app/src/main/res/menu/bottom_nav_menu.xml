@@ -3,12 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/home_action"
+        android:id="@+id/homeFragment"
         android:icon="@drawable/ic_home"
         android:title="@string/home"
         app:showAsAction="always" />
     <item
-        android:id="@+id/cart_action"
+        android:id="@+id/cartFragment"
         android:icon="@drawable/ic_cart"
         android:title="@string/cart"
         app:showAsAction="always" />

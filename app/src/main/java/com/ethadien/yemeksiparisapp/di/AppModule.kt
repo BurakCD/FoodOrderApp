@@ -48,8 +48,8 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideCartFoodRepository(cartFoodDS : CartFoodDataSource, firebaseAuth: FirebaseAuth) : CartFoodRepository {
-        return CartFoodRepository(cartFoodDS, firebaseAuth)
+    fun provideCartFoodRepository(cartFoodDS : CartFoodDataSource) : CartFoodRepository {
+        return CartFoodRepository(cartFoodDS)
     }
 
     @Provides

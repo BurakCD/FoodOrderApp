@@ -5,9 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
-import com.ethadien.yemeksiparisapp.R
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.ethadien.yemeksiparisapp.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -21,10 +20,30 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
 
+        with(viewModel) {
+            foodSet.observe(viewLifecycleOwner) {
+                if (it != null) {
+                    binding.foodsRV.adapter = RecyclerAdapter(requireContext(), it, viewModel)
 
+                    //binding.homeRV.layoutManager =
+                        //StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+                    //binding.homeRV.adapter = FoodAdapter(requireContext(), it, viewModel)
+                }
+            }
+            drinkSet.observe(viewLifecycleOwner){
+                if (it != null) {
+                    binding.drinkRV.adapter = RecyclerAdapter(requireContext(), it, viewModel)
+                }
+            }
+            desertSet.observe(viewLifecycleOwner){
+                if (it != null) {
+                    binding.desertRV.adapter = RecyclerAdapter(requireContext(), it, viewModel)
+                }
+            }
+        }
         return binding.root
     }
 
@@ -32,6 +51,11 @@ class HomeFragment : Fragment() {
         super.onCreate(savedInstanceState)
         val tempViewModel : HomeViewModel by viewModels()
         viewModel = tempViewModel
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.getFoods()
     }
 
     override fun onDestroy() {

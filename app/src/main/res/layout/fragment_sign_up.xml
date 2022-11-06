@@ -129,7 +129,7 @@
                     android:layout_marginStart="50dp"
                     android:layout_marginEnd="50dp"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:hint="@string/confirmPassword"
+                    android:hint="@string/confirm_password"
                     app:boxBackgroundColor="@color/white"
                     android:textColorHint="@color/whiteRED"
                     app:startIconDrawable="@drawable/ic_password"

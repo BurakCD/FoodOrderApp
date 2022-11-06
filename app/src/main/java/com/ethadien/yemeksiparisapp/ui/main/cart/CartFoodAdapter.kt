@@ -2,13 +2,15 @@ package com.ethadien.yemeksiparisapp.ui.main.cart
 
 import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.ethadien.yemeksiparisapp.R
-import com.ethadien.yemeksiparisapp.data.entity.CartFood
+import com.ethadien.yemeksiparisapp.data.entity.CrudAnswer
+import com.ethadien.yemeksiparisapp.data.entity.cart.CartFood
 import com.ethadien.yemeksiparisapp.databinding.CartDesignBinding
 import com.ethadien.yemeksiparisapp.utils.Constants.IMAGE_BASE_URL
 import com.ethadien.yemeksiparisapp.utils.showSnackbar
@@ -39,33 +41,31 @@ class CartFoodAdapter(
 
             // Image Loader
             Glide.with(mContext)
-                .load("$IMAGE_BASE_URL${food.food_image_name}")
+                .load("$IMAGE_BASE_URL${food.yemek_resim_adi}")
                 .override(90, 90)
                 .into(foodImage)
 
             // Variable Loaders
-            foodName.text = food.food_name
-            foodPrice.text = food.food_price
-            foodCount.text = food.food_count.toString()
+            cartFood = food
 
             // Clicks
             deleteButton.setOnClickListener{
 
                 val dialog = AlertDialog.Builder(mContext)
-                dialog.setTitle(R.string.wantToDelete)
-                dialog.setMessage(food.food_name)
+                dialog.setTitle(R.string.want_to_delete)
+                dialog.setMessage(food.yemek_adi)
                 dialog.setIcon(R.drawable.ic_delete)
 
-                dialog.setPositiveButton(R.string.okayText){ s, d-> // s = string d = Dialog Interface
-                    val success = viewModel.delete(food.cart_food_id)
+                dialog.setPositiveButton(R.string.okay_text){  d, s -> // s = string d = Dialog Interface
+                    val success = viewModel.delete(food.sepet_yemek_id)
 
                     if (success.equals(1)){
-                        showSnackbar(it, R.string.itemDeleted)
+                        showSnackbar(it, R.string.item_deleted)
                     }else{
-                        showSnackbar(it, R.string.itemCantDeleted)
+                        showSnackbar(it, R.string.item_cant_deleted)
                     }
                 }
-                dialog.setNegativeButton(R.string.noText){s, d ->
+                dialog.setNegativeButton(R.string.no_text){ d, s ->
                 }
                 dialog.create().show()
             }
@@ -73,7 +73,7 @@ class CartFoodAdapter(
     }
 
     override fun getItemCount(): Int {
-        return foodList.size
+            return foodList.size
     }
 
 

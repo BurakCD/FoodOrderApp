@@ -77,9 +77,6 @@ dependencies {
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
 
-    // Custom Quantitizer
-    implementation "com.github.kojofosu:Quantitizer:1.6.6"
-
     // Firebase Auth and Firestore
     implementation platform('com.google.firebase:firebase-bom:31.0.1')
     implementation 'com.google.firebase:firebase-auth-ktx'

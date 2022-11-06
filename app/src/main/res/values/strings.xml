@@ -1,8 +1,12 @@
 <resources>
     <string name="app_name">Holly Belly</string>
+    
     <string name="home">Home</string>
     <string name="cart">Cart</string>
     <string name="details">Details</string>
+    <string name="foods">Foods</string>
+    <string name="drinks">Drinks</string>
+    <string name="deserts">Deserts</string>
 
     <string name="sign_in">SIGN IN</string>
     <string name="sign_up">SIGN UP</string>
@@ -12,23 +16,27 @@
     <string name="nickname">Nickname</string>
     <string name="phone_no">Phone Number</string>
     <string name="password">Password</string>
-    <string name="confirmPassword">Confirm Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    
     <string name="price">Price</string>
-    <string name="addToCart">Add To Cart</string>
-    <string name="moneyType">$</string>
+    <string name="add_to_cart">Add To Cart</string>
+    <string name="money_type">$</string>
+    
     <string name="password_match_error">Passwords do not match</string>
     <string name="sign_up_snack_text">Registration successfully created</string>
     <string name="registered_mail">E-mail address already registered!</string>
     <string name="invalid_mail">Invalid e-mail address</string>
     <string name="incomplete_information_entered">Incomplete information entered!</string>
     <string name="wrong_email_password">Wrong E-mail or Password, Try Again !</string>
+    <string name="dont_null">Field cannot be empty!</string>
+    <string name="not_zero">Item cannot be zero!</string>
+    <string name="oneItemAdded">1 Item added to the cart!</string>
+    <string name="cart_is_empty">Your cart is empty!</string>
 
-    <string name="okayText">Yes</string>
-    <string name="noText">No</string>
+    <string name="okay_text">Yes</string>
+    <string name="no_text">No</string>
 
-    <string name="wantToDelete">Do you want to delete?</string>
-    <string name="itemDeleted">Item Deleted</string>
-    <string name="itemCantDeleted">Item could not be deleted</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="want_to_delete">Do you want to delete?</string>
+    <string name="item_deleted">Item Deleted</string>
+    <string name="item_cant_deleted">Item could not be deleted</string>
 </resources>
