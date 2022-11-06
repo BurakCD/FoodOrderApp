@@ -210,7 +210,7 @@
         android:alpha="0.7"
         android:lines="4"
         android:fontFamily="@font/roboto_medium"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/totalPriceTitle"
         app:layout_constraintEnd_toStartOf="@+id/editImage"
@@ -234,7 +234,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/addressEditText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/black"
             android:gravity="start|top"
             android:lines="4" />
     </com.google.android.material.textfield.TextInputLayout>

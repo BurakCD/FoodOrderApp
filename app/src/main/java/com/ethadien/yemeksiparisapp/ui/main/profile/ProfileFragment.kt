@@ -46,7 +46,7 @@ class ProfileFragment : Fragment() {
             viewModel.userInfo.observe(viewLifecycleOwner) {
                 emailText.text = it.e_mail
                 nicknameText.text = it.nickname
-                phoneNumberText.text = it.nickname
+                phoneNumberText.text = it.phone
             }
         }
     }
