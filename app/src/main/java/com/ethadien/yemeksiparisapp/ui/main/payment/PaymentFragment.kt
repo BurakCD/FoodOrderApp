@@ -48,16 +48,7 @@ class  PaymentFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.booksBasket.observe(viewLifecycleOwner) { list ->
-            var totalPrice = 0f
-            for (i in list) {
-                i.bookPrice?.let {
-                    totalPrice += it.toFloat()
-                }
-            }
-            binding.totalPriceText.text =
-                NumberFormat.getCurrencyInstance(Locale("tr", "TR")).format(totalPrice)
-        }
+
 
         with(binding) {
 
