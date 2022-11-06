@@ -15,7 +15,7 @@
             app:destination="@id/foodDetailFragment"
             app:popUpTo="@id/homeFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_profileFragment"
+            android:id="@+id/home_to_profile"
             app:destination="@id/profileFragment" />
     </fragment>
 

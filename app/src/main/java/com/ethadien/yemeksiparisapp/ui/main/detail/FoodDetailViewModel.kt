@@ -14,12 +14,12 @@ import javax.inject.Inject
 @HiltViewModel
 class FoodDetailViewModel @Inject constructor(var cartFoodRepository: CartFoodRepository, var firebaseAuth : FirebaseAuth): ViewModel() {
 
-    fun addToCart(food : Food, count : Int){
+    fun addToCart(food_name : String, food_image_name:String, food_price:Int, count : Int){
         CoroutineScope(Dispatchers.Main).launch {
             cartFoodRepository.addToCart(
-                food.yemek_adi,
-                food.yemek_resim_adi,
-                food.yemek_fiyat,
+                food_name,
+                food_image_name,
+                food_price,
                 count, firebaseAuth.currentUser!!.uid)
             Log.e("detailViewModel", "addToCart")
         }

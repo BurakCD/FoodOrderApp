@@ -168,7 +168,7 @@
                 android:text="@string/add_to_cart"
                 android:textColor="@color/white"
                 android:textStyle="bold"
-                android:onClick="@{()-> foodDetailFragment.addToCart(foodInstance, countText.getText().toString())}"
+                android:onClick="@{()-> foodDetailFragment.addToCart(foodInstance.yemek_adi, foodInstance.yemek_resim_adi,  priceText.getText().toString() , countText.getText().toString())}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />

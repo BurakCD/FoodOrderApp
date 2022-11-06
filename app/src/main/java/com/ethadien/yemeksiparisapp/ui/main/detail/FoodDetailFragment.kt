@@ -78,8 +78,8 @@ class FoodDetailFragment : Fragment() {
         binding.priceText.text = price.toString()
     }
 
-    fun addToCart(food: Food, count : String) {
-        viewModel.addToCart(food, count.toInt())
+    fun addToCart(food_name:String, food_image_name:String, food_price:String, count : String) {
+        viewModel.addToCart(food_name, food_image_name, food_price.toInt(), count.toInt())
         goToHome()
     }
 

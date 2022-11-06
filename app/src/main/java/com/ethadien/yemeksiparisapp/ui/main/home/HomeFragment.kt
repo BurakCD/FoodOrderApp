@@ -5,9 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.ethadien.yemeksiparisapp.R
 import com.ethadien.yemeksiparisapp.databinding.FragmentHomeBinding
+import com.ethadien.yemeksiparisapp.utils.gate
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -20,7 +24,9 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
+
+        binding.homeFragment = this
 
 
         with(viewModel) {
@@ -45,6 +51,10 @@ class HomeFragment : Fragment() {
             }
         }
         return binding.root
+    }
+
+    fun goToProfile(){
+        Navigation.gate(requireView(), R.id.home_to_profile)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
