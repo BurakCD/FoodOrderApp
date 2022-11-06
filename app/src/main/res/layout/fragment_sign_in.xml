@@ -113,7 +113,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
                     android:layout_marginBottom="40dp"
-                    android:background="@drawable/black_button_background"
+                    android:background="@drawable/red_button_background"
                     android:text="@string/sign_in"
                     android:textAlignment="center"
                     android:textColor="@color/white"

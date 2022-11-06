@@ -11,7 +11,9 @@ import androidx.fragment.app.viewModels
 import com.ethadien.yemeksiparisapp.R
 import com.ethadien.yemeksiparisapp.databinding.FragmentProfileBinding
 import com.ethadien.yemeksiparisapp.ui.login.LoginActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ProfileFragment : Fragment() {
 
     private var _binding: FragmentProfileBinding? = null
