@@ -15,4 +15,7 @@
     <color name="DARKRED">#850101</color>
     <color name="whiteRED">#CC4D4D</color>
 
+    <color name="selected_payment_card">#CAE5ED</color>
+
+
 </resources>

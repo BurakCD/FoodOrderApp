@@ -80,6 +80,7 @@ class FoodDetailFragment : Fragment() {
 
     fun addToCart(food: Food, count : String) {
         viewModel.addToCart(food, count.toInt())
+        goToHome()
     }
 
     fun goToHome(){

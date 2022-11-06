@@ -25,6 +25,7 @@ class CartFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentCartBinding.inflate(inflater, container, false)
+        var totalPrice = 0
 
         with(viewModel) {
             cartList.observe(viewLifecycleOwner) {
@@ -33,6 +34,10 @@ class CartFragment : Fragment() {
                 }else{
                     binding.cartRV.adapter = EmptyCartAdapter(requireContext())
                 }
+                for (i in it){
+                    totalPrice += i.yemek_fiyat.toInt()
+                }
+                binding.cartTotalPrice.text = totalPrice.toString()
             }
             drinkSet.observe(viewLifecycleOwner) {
                 if (it != null) {
@@ -47,6 +52,11 @@ class CartFragment : Fragment() {
         super.onCreate(savedInstanceState)
         val tempViewModel: CartViewModel by viewModels()
         viewModel = tempViewModel
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.getCart()
     }
 
     override fun onDestroy() {

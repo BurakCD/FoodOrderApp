@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     android:gravity="center"
     tools:context=".ui.splash.SplashActivity">
 
@@ -25,7 +26,7 @@
         android:text="@string/app_name"
         android:textAlignment="center"
         android:textAllCaps="false"
-        android:textColor="@color/white"
+        android:textColor="@color/RED"
         android:textSize="60sp"
         android:textStyle="bold" />
 

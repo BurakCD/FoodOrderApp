@@ -14,7 +14,11 @@
             android:id="@+id/home_to_details"
             app:destination="@id/foodDetailFragment"
             app:popUpTo="@id/homeFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/cartFragment"
         android:name="com.ethadien.yemeksiparisapp.ui.main.cart.CartFragment"
@@ -23,7 +27,11 @@
         <action
             android:id="@+id/action_cartFragment_to_foodDetailFragment"
             app:destination="@id/foodDetailFragment" />
+        <action
+            android:id="@+id/action_cartFragment_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/foodDetailFragment"
         android:name="com.ethadien.yemeksiparisapp.ui.main.detail.FoodDetailFragment"
@@ -31,9 +39,30 @@
         tools:layout="@layout/fragment_food_detail">
         <action
             android:id="@+id/go_to_home"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
         <argument
             android:name="food"
             app:argType="com.ethadien.yemeksiparisapp.data.entity.food.Food" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.canerture.booksapp.ui.main.profile.ProfileFragment"
+        android:label="ProfileFragment"
+        tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="com.ethadien.yemeksiparisapp.ui.main.payment.PaymentFragment"
+        android:label="fragment_payment"
+        tools:layout="@layout/fragment_payment" >
+        <action
+            android:id="@+id/payment_to_home"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/payment_to_cart"
+            app:destination="@id/cartFragment" />
     </fragment>
 </navigation>

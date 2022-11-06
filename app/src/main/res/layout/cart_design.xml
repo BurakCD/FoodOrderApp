@@ -15,13 +15,12 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_margin="10dp"
-        app:cardCornerRadius="16dp"
+        app:cardCornerRadius="12dp"
         app:cardElevation="12dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/ui_button_background">
+            android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/foodImage"
@@ -37,9 +36,12 @@
                 android:id="@+id/foodName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="17dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="12dp"
+                android:fontFamily="@font/roboto_medium"
                 android:text="@{cartFood.yemek_adi}"
+                android:textSize="16sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/foodImage"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -47,21 +49,25 @@
                 android:id="@+id/foodPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="17dp"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/roboto_medium"
                 android:text="@{cartFood.yemek_fiyat}"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/foodImage"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/foodPriceText"
+                app:layout_constraintTop_toTopOf="@+id/foodPriceText" />
 
             <TextView
                 android:id="@+id/foodCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="17dp"
-                android:layout_marginTop="6dp"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/roboto_medium"
                 android:text="@{Integer.toString(cartFood.yemek_siparis_adet)}"
-                app:layout_constraintStart_toEndOf="@+id/foodImage"
-                app:layout_constraintTop_toBottomOf="@+id/foodPrice" />
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/foodCountText"
+                app:layout_constraintTop_toTopOf="@+id/foodCountText" />
 
             <ImageView
                 android:id="@+id/deleteButton"
@@ -72,6 +78,32 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_delete" />
+
+            <TextView
+                android:id="@+id/foodPriceText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="40dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/food_price_text"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/foodImage"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/foodCountText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/food_count_text"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/foodImage"
+                app:layout_constraintTop_toBottomOf="@+id/foodPriceText" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>

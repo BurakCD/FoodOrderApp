@@ -20,9 +20,10 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ScrollView
+            android:id="@+id/scrollView2"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/addToCartButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cartToolbar">
@@ -52,9 +53,9 @@
                             android:fontFamily="@font/roboto_medium"
                             android:text="@string/drinks"
                             android:textColor="@color/white"
-                            android:textSize="30sp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintBottom_toTopOf="@id/cartDrinkRV"/>
+                            android:textSize="20sp"
+                            app:layout_constraintBottom_toTopOf="@id/cartDrinkRV"
+                            app:layout_constraintStart_toStartOf="parent" />
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/cartDrinkRV"
@@ -62,12 +63,74 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
                             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintBottom_toBottomOf="parent" />
+                            app:layout_constraintStart_toStartOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
         </ScrollView>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/addToCartButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/ui_button_background"
+            android:drawableStart="@drawable/ic_card"
+            android:drawablePadding="-80dp"
+            android:fontFamily="@font/roboto_medium"
+            android:paddingStart="90dp"
+            android:text="@string/go_to_payment"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/linearLayout2"
+            app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/addToCartButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/scrollView2">
+
+                <TextView
+                    android:id="@+id/cartTotalPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@{Integer.toString(foodInstance.yemek_fiyat)}"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/cartMoneyType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/money_type"
+                    android:textColor="@color/black"
+                    android:textSize="24sp" />
+        </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

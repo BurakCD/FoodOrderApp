@@ -28,6 +28,7 @@
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:overScrollMode="never"
             app:layout_constraintBottom_toTopOf="@+id/tabLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
