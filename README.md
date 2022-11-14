@@ -17,5 +17,10 @@
 * MVVM
 * Kotlin Extensions
 * Glide
+* AndroidX
+* Data Binding
+* ViewBinding
+* Life Cycles
+* Live Data
 
 ![Gif](https://github.com/BurakCD/FoodOrderApp/blob/master/ezgif.com-gif-maker.gif)
